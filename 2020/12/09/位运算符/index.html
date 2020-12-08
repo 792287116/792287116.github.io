@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"www.meiniqiang.cool","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
 
-  <meta name="description" content="二叉树：左子节点 &lt;&#x3D; 根节点，右子节点 &gt;&#x3D; 根节点 缺点：容易出现链式，增加查询复杂度 红黑树： 节点红色或黑色 根节点是黑色 每个叶子节点是黑色 红色节点的两个子节点是黑色 任意一个节点到叶子节点包含相同的黑色节点  左旋：右节点作为旋转节点的父节点，右节点的左节点作为旋转节点的右节点 右旋：左节点作为旋转节点的父节点，左节点的右节点作为旋转节点的左节点 变色：节点变成红黑变色">
+  <meta name="description" content="&amp;（按位与）:    同为1时取1，不然取0123 1010&amp;1100&#x3D;1000    |（按位或）:    同为0取0 不然为1123 1010|1100&#x3D;1110    ^（按位异或）:    相同为0 不同为1123 1010^1100&#x3D;0110    ~(按位取反):    每个位置取反11010 &#x3D;&gt; 0101    &lt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="红黑树">
-<meta property="og:url" content="http://www.meiniqiang.cool/2020/12/08/%E7%BA%A2%E9%BB%91%E6%A0%91/index.html">
+<meta property="og:title" content="位运算符">
+<meta property="og:url" content="http://www.meiniqiang.cool/2020/12/09/%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/index.html">
 <meta property="og:site_name" content="Steven">
-<meta property="og:description" content="二叉树：左子节点 &lt;&#x3D; 根节点，右子节点 &gt;&#x3D; 根节点 缺点：容易出现链式，增加查询复杂度 红黑树： 节点红色或黑色 根节点是黑色 每个叶子节点是黑色 红色节点的两个子节点是黑色 任意一个节点到叶子节点包含相同的黑色节点  左旋：右节点作为旋转节点的父节点，右节点的左节点作为旋转节点的右节点 右旋：左节点作为旋转节点的父节点，左节点的右节点作为旋转节点的左节点 变色：节点变成红黑变色">
+<meta property="og:description" content="&amp;（按位与）:    同为1时取1，不然取0123 1010&amp;1100&#x3D;1000    |（按位或）:    同为0取0 不然为1123 1010|1100&#x3D;1110    ^（按位异或）:    相同为0 不同为1123 1010^1100&#x3D;0110    ~(按位取反):    每个位置取反11010 &#x3D;&gt; 0101    &lt;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-08T12:35:06.000Z">
-<meta property="article:modified_time" content="2020-12-08T19:41:30.275Z">
+<meta property="article:published_time" content="2020-12-08T19:39:15.000Z">
+<meta property="article:modified_time" content="2020-12-08T19:44:46.562Z">
 <meta property="article:author" content="Steven">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://www.meiniqiang.cool/2020/12/08/%E7%BA%A2%E9%BB%91%E6%A0%91/">
+<link rel="canonical" href="http://www.meiniqiang.cool/2020/12/09/%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/">
 
 
 <script class="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>红黑树 | Steven</title>
+  <title>位运算符 | Steven</title>
   
 
 
@@ -148,7 +148,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">二叉树：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">红黑树：</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#amp-%EF%BC%88%E6%8C%89%E4%BD%8D%E4%B8%8E%EF%BC%89-%E5%90%8C%E4%B8%BA1%E6%97%B6%E5%8F%961%EF%BC%8C%E4%B8%8D%E7%84%B6%E5%8F%960"><span class="nav-number">1.</span> <span class="nav-text">&amp;（按位与）:    同为1时取1，不然取0</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%88%E6%8C%89%E4%BD%8D%E6%88%96%EF%BC%89-%E5%90%8C%E4%B8%BA0%E5%8F%960-%E4%B8%8D%E7%84%B6%E4%B8%BA1"><span class="nav-number">2.</span> <span class="nav-text">|（按位或）:    同为0取0 不然为1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%88%E6%8C%89%E4%BD%8D%E5%BC%82%E6%88%96%EF%BC%89-%E7%9B%B8%E5%90%8C%E4%B8%BA0-%E4%B8%8D%E5%90%8C%E4%B8%BA1"><span class="nav-number">3.</span> <span class="nav-text">^（按位异或）:    相同为0 不同为1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8C%89%E4%BD%8D%E5%8F%96%E5%8F%8D-%E6%AF%8F%E4%B8%AA%E4%BD%8D%E7%BD%AE%E5%8F%96%E5%8F%8D"><span class="nav-number">4.</span> <span class="nav-text">~(按位取反):    每个位置取反</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#lt-lt-%E5%B7%A6%E7%A7%BB"><span class="nav-number">5.</span> <span class="nav-text">&lt;&lt; (左移)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#gt-gt-%E5%8F%B3%E7%A7%BB"><span class="nav-number">6.</span> <span class="nav-text">&gt;&gt;(右移)</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -198,7 +198,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.meiniqiang.cool/2020/12/08/%E7%BA%A2%E9%BB%91%E6%A0%91/">
+    <link itemprop="mainEntityOfPage" href="http://www.meiniqiang.cool/2020/12/09/%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -214,7 +214,7 @@
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          红黑树
+          位运算符
         </h1>
 
         <div class="post-meta-container">
@@ -224,16 +224,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2020-12-08 20:35:06" itemprop="dateCreated datePublished" datetime="2020-12-08T20:35:06+08:00">2020-12-08</time>
+      <time title="创建时间：2020-12-09 03:39:15 / 修改时间：03:44:46" itemprop="dateCreated datePublished" datetime="2020-12-09T03:39:15+08:00">2020-12-09</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-12-09 03:41:30" itemprop="dateModified" datetime="2020-12-09T03:41:30+08:00">2020-12-09</time>
-      </span>
 
   
 </div>
@@ -245,19 +239,28 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h5 id="二叉树："><a href="#二叉树：" class="headerlink" title="二叉树："></a>二叉树：</h5><p>左子节点 &lt;= 根节点，右子节点 &gt;= 根节点</p>
-<p>缺点：容易出现链式，增加查询复杂度</p>
-<h5 id="红黑树："><a href="#红黑树：" class="headerlink" title="红黑树："></a>红黑树：</h5><ol>
-<li>节点红色或黑色</li>
-<li>根节点是黑色</li>
-<li>每个叶子节点是黑色</li>
-<li>红色节点的两个子节点是黑色</li>
-<li>任意一个节点到叶子节点包含相同的黑色节点</li>
-</ol>
-<p>左旋：右节点作为旋转节点的父节点，右节点的左节点作为旋转节点的右节点</p>
-<p>右旋：左节点作为旋转节点的父节点，左节点的右节点作为旋转节点的左节点</p>
-<p>变色：节点变成红黑变色</p>
-<p>map实现用到红黑树</p>
+        <h5 id="amp-（按位与）-同为1时取1，不然取0"><a href="#amp-（按位与）-同为1时取1，不然取0" class="headerlink" title="&amp;（按位与）:    同为1时取1，不然取0"></a>&amp;（按位与）:    同为1时取1，不然取0</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> 1010</span><br><span class="line">&amp;1100</span><br><span class="line">&#x3D;1000</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="（按位或）-同为0取0-不然为1"><a href="#（按位或）-同为0取0-不然为1" class="headerlink" title="|（按位或）:    同为0取0 不然为1"></a>|（按位或）:    同为0取0 不然为1</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> 1010</span><br><span class="line">|1100</span><br><span class="line">&#x3D;1110</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="（按位异或）-相同为0-不同为1"><a href="#（按位异或）-相同为0-不同为1" class="headerlink" title="^（按位异或）:    相同为0 不同为1"></a>^（按位异或）:    相同为0 不同为1</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> 1010</span><br><span class="line">^1100</span><br><span class="line">&#x3D;0110</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="按位取反-每个位置取反"><a href="#按位取反-每个位置取反" class="headerlink" title="~(按位取反):    每个位置取反"></a>~(按位取反):    每个位置取反</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1010 &#x3D;&gt; 0101</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="lt-lt-左移"><a href="#lt-lt-左移" class="headerlink" title="&lt;&lt; (左移)"></a>&lt;&lt; (左移)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1010 &#x3D;&gt; 0100 </span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="gt-gt-右移"><a href="#gt-gt-右移" class="headerlink" title="&gt;&gt;(右移)"></a>&gt;&gt;(右移)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1010 &#x3D;&gt; 0101</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -271,11 +274,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2020/12/09/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="prev" title="排序算法">
+                  <i class="fa fa-chevron-left"></i> 排序算法
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/12/09/%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/" rel="next" title="进制转换">
-                  进制转换 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
