@@ -23,7 +23,15 @@ npm run dev
 
 ## 第二步：新增文章
 
-在 `src/content/blog` 新建文件，比如：
+推荐直接运行下面这个命令：
+
+```bash
+npm run new-post -- "我的第一篇文章"
+```
+
+它会自动在 `src/content/blog` 里生成一个 Markdown 文件，并写入基础 frontmatter。
+
+如果你想手动新建文件，也可以，比如：
 
 ```text
 src/content/blog/my-first-post.md
@@ -43,7 +51,11 @@ featured: false
 ---
 ```
 
-下面接正文即可。
+通常你只需要改三处：
+
+- `description`：写一句摘要
+- `tags`：改成这篇文章的标签
+- 正文内容：替换成你的文章
 
 ## 第三步：提交并推送
 

@@ -19,8 +19,13 @@ npm run preview
 
 ## 发布新文章
 
-1. 在 `src/content/blog` 新建一个 Markdown 文件。
-2. 写 frontmatter：
+1. 推荐直接生成模板：
+
+```bash
+npm run new-post -- "我的新文章"
+```
+
+2. 命令会自动在 `src/content/blog` 下创建 Markdown 文件，并填好基础 frontmatter：
 
 ```yaml
 ---
@@ -34,7 +39,7 @@ featured: false
 ---
 ```
 
-3. 写正文。
+3. 你只需要补 `description`、调整 `tags`，然后写正文。
 4. 提交并推送：
 
 ```bash
