@@ -1,0 +1,30 @@
+---
+import FormattedDate from "./FormattedDate.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="post-card">
+  <div class="post-card__meta">
+    <FormattedDate date={post.data.publishDate} />
+    {post.data.updatedDate && (
+      <span>更新于 <FormattedDate date={post.data.updatedDate} /></span>
+    )}
+  </div>
+  <h3>
+    <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+  </h3>
+  <p>{post.data.description}</p>
+  {post.data.tags.length > 0 && (
+    <ul class="tag-list" aria-label="文章标签">
+      {post.data.tags.map((tag) => (
+        <li>{tag}</li>
+      ))}
+    </ul>
+  )}
+</article>

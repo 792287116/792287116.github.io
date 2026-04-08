@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="关于 | Steven's Field Notes" description="关于这个博客站点">
+  <section class="page-intro">
+    <span class="eyebrow">About</span>
+    <h1>关于这个站点</h1>
+    <p>这个博客基于 Astro 搭建，面向 GitHub Pages 部署，适合个人写作、项目复盘和技术沉淀。</p>
+  </section>
+
+  <section class="story-grid story-grid--wide">
+    <article>
+      <h2>适合写什么</h2>
+      <p>你可以把它当成技术博客、成长记录、项目日志、产品灵感簿，甚至简单的个人主页。</p>
+    </article>
+    <article>
+      <h2>后续怎么改</h2>
+      <p>站点基本信息集中在 <code>src/config/site.ts</code>，样式集中在 <code>src/styles/global.css</code>。</p>
+    </article>
+    <article>
+      <h2>怎么发新文章</h2>
+      <p>在 <code>src/content/blog</code> 新建 Markdown 文件，写好 frontmatter，提交并推送即可。</p>
+    </article>
+  </section>
+</BaseLayout>

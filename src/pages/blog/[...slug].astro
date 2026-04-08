@@ -1,0 +1,54 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BaseLayout
+  title={`${post.data.title} | Steven's Field Notes`}
+  description={post.data.description}
+  pageType="article"
+>
+  <article class="article">
+    <a class="back-link" href="/blog">返回文章列表</a>
+
+    <header class="article__header">
+      <span class="eyebrow">Article</span>
+      <h1>{post.data.title}</h1>
+      <p>{post.data.description}</p>
+      <div class="article__meta">
+        <span>发布于 <FormattedDate date={post.data.publishDate} /></span>
+        {post.data.updatedDate && (
+          <span>更新于 <FormattedDate date={post.data.updatedDate} /></span>
+        )}
+      </div>
+      {post.data.tags.length > 0 && (
+        <ul class="tag-list" aria-label="文章标签">
+          {post.data.tags.map((tag) => (
+            <li>{tag}</li>
+          ))}
+        </ul>
+      )}
+    </header>
+
+    <div class="article__body prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

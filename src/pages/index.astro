@@ -1,0 +1,74 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PostCard from "../components/PostCard.astro";
+import { SITE } from "../config/site";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+const featuredPosts = posts.filter((post) => post.data.featured).slice(0, 3);
+const latestPosts = featuredPosts.length > 0 ? featuredPosts : posts.slice(0, 3);
+const postCount = posts.length.toString().padStart(2, "0");
+---
+
+<BaseLayout title={SITE.title} description={SITE.description}>
+  <section class="hero">
+    <div class="hero__content">
+      <span class="eyebrow">Astro Blog</span>
+      <h1>{SITE.heroTitle}</h1>
+      <p>{SITE.heroDescription}</p>
+      <div class="hero__actions">
+        <a class="button" href="/blog">看最新文章</a>
+        <a class="button button--ghost" href="/about">了解这个站点</a>
+      </div>
+    </div>
+
+    <aside class="hero-card">
+      <span class="hero-card__label">写作节奏</span>
+      <div class="hero-card__stat">{postCount}</div>
+      <p>当前已发布文章数。你可以把它当作个人博客、技术博客，或者项目发布日志来用。</p>
+      <ul class="hero-card__list">
+        <li>Markdown 写作</li>
+        <li>GitHub Pages 自动部署</li>
+        <li>适合长期维护</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section class="content-section">
+    <div class="section-heading">
+      <span class="eyebrow">Latest Notes</span>
+      <h2>最近更新</h2>
+      <p>默认展示置顶文章，没有置顶时展示最新发布内容。</p>
+    </div>
+
+    <div class="post-grid">
+      {latestPosts.map((post) => (
+        <PostCard post={post} />
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section story-block">
+    <div class="section-heading">
+      <span class="eyebrow">Why This Space</span>
+      <h2>一个适合慢慢长大的博客骨架</h2>
+    </div>
+    <div class="story-grid">
+      <article>
+        <h3>默认就够清爽</h3>
+        <p>首页、文章列表、文章详情都已经配好，不需要先自己拼结构才能开写。</p>
+      </article>
+      <article>
+        <h3>部署不用手动折腾</h3>
+        <p>推到 GitHub 后会自动构建发布，后续你只需要写文章、提交、推送。</p>
+      </article>
+      <article>
+        <h3>样式容易继续改</h3>
+        <p>颜色、字体、导航、个人介绍都集中在少数几个文件里，后续维护成本低。</p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
