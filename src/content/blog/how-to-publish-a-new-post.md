@@ -50,7 +50,7 @@ featured: false
 ```bash
 git add .
 git commit -m "publish: add new post"
-git push origin main
+git push origin master
 ```
 
 推送之后，GitHub Actions 会自动构建并部署到 `https://792287116.github.io`。

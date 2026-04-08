@@ -40,7 +40,7 @@ featured: false
 ```bash
 git add .
 git commit -m "publish: add post"
-git push origin main
+git push origin master
 ```
 
 ## 常改的地方
@@ -53,4 +53,4 @@ git push origin main
 
 ## GitHub Pages
 
-仓库里已经带了 `.github/workflows/deploy.yml`。推送到 `main` 分支后，GitHub Actions 会自动构建并部署。
+仓库里已经带了 `.github/workflows/deploy.yml`。推送到 `master` 分支后，GitHub Actions 会自动构建并部署。
