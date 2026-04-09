@@ -288,6 +288,259 @@ code {
   background: var(--accent-soft);
 }
 
+.hero--dashboard {
+  align-items: start;
+}
+
+.hero-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.hero-highlights span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(30, 49, 49, 0.08);
+  color: var(--accent-strong);
+  font-size: 0.95rem;
+}
+
+.hero-card--dashboard {
+  gap: 22px;
+}
+
+.hero-card__header strong,
+.hero-card__header span {
+  display: block;
+}
+
+.hero-card__header strong {
+  font-size: 1.5rem;
+  font-family: "Newsreader", serif;
+}
+
+.hero-card__header span {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.hero-card__metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.hero-card__metrics article {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.hero-card__metrics span,
+.roadmap-item span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.88rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero-card__metrics strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.7fr);
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.dashboard-card,
+.roadmap-item {
+  backdrop-filter: blur(12px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius-xl);
+}
+
+.dashboard-card {
+  padding: 30px;
+}
+
+.calendar-card {
+  grid-row: span 2;
+}
+
+.features-card {
+  grid-column: 1 / -1;
+}
+
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: end;
+  margin-bottom: 24px;
+}
+
+.panel-heading h2,
+.roadmap-item h3 {
+  margin: 10px 0 0;
+  font-family: "Newsreader", serif;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.panel-heading h2 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+}
+
+.panel-heading p,
+.agenda-item p,
+.shortcut-item p,
+.feature-list p,
+.roadmap-item p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.panel-heading p {
+  max-width: 28ch;
+}
+
+.calendar-weekdays,
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.calendar-weekdays {
+  margin-bottom: 10px;
+}
+
+.calendar-weekdays span {
+  padding: 10px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.calendar-cell {
+  min-height: 82px;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(30, 49, 49, 0.06);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  font-weight: 600;
+}
+
+.calendar-cell--muted {
+  opacity: 0.32;
+}
+
+.calendar-cell--today {
+  background: linear-gradient(145deg, rgba(13, 122, 107, 0.2), rgba(255, 255, 255, 0.88));
+  border-color: rgba(13, 122, 107, 0.28);
+  color: var(--accent-strong);
+  box-shadow: inset 0 0 0 1px rgba(13, 122, 107, 0.08);
+}
+
+.agenda-list,
+.feature-list,
+.roadmap-list {
+  display: grid;
+  gap: 16px;
+}
+
+.agenda-item,
+.shortcut-item,
+.feature-list li {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.54);
+  border: 1px solid rgba(30, 49, 49, 0.07);
+}
+
+.agenda-item {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 14px;
+  padding: 18px;
+}
+
+.agenda-item__time {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 4px;
+  color: var(--accent-strong);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.agenda-item h3,
+.shortcut-item strong,
+.feature-list strong {
+  display: block;
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+.shortcut-list {
+  display: grid;
+  gap: 14px;
+}
+
+.shortcut-item {
+  display: block;
+  padding: 20px;
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.shortcut-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(13, 122, 107, 0.24);
+}
+
+.feature-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.feature-list li {
+  padding: 20px;
+}
+
+.roadmap-section {
+  margin-top: 24px;
+}
+
+.roadmap-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.roadmap-item {
+  padding: 22px;
+}
+
+.roadmap-item h3 {
+  font-size: 1.8rem;
+}
+
 .content-section,
 .page-intro,
 .article {
@@ -487,7 +740,10 @@ code {
   .hero,
   .post-grid,
   .post-grid--stacked,
-  .story-grid {
+  .story-grid,
+  .dashboard-grid,
+  .feature-list,
+  .roadmap-list {
     grid-template-columns: 1fr;
   }
 
@@ -499,10 +755,26 @@ code {
 
   .hero__content,
   .hero-card,
+  .dashboard-card,
   .content-section,
   .page-intro,
   .article {
     padding: 28px;
+  }
+
+  .calendar-card,
+  .features-card {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .panel-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .panel-heading p {
+    max-width: none;
   }
 }
 
@@ -520,5 +792,15 @@ code {
 
   .nav-list a {
     padding-inline: 12px;
+  }
+
+  .hero-card__metrics,
+  .agenda-item {
+    grid-template-columns: 1fr;
+  }
+
+  .calendar-cell {
+    min-height: 58px;
+    padding: 10px;
   }
 }
