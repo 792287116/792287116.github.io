@@ -1,26 +1,25 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+
+import { getEntry, render } from "astro:content";
+import Markdown from "@components/common/Markdown.astro";
+import I18nKey from "@/i18n/i18nKey";
+import { i18n } from "@/i18n/translation";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+
+const aboutPost = await getEntry("spec", "about");
+
+if (!aboutPost) {
+	throw new Error("About page content not found");
+}
+
+const { Content } = await render(aboutPost);
 ---
-
-<BaseLayout title="关于 | Steven's Field Notes" description="关于这个博客站点">
-  <section class="page-intro">
-    <span class="eyebrow">About</span>
-    <h1>关于这个站点</h1>
-    <p>这个博客基于 Astro 搭建，面向 GitHub Pages 部署，适合个人写作、项目复盘和技术沉淀。</p>
-  </section>
-
-  <section class="story-grid story-grid--wide">
-    <article>
-      <h2>适合写什么</h2>
-      <p>你可以把它当成技术博客、成长记录、项目日志、产品灵感簿，甚至简单的个人主页。</p>
-    </article>
-    <article>
-      <h2>后续怎么改</h2>
-      <p>站点基本信息集中在 <code>src/config/site.ts</code>，样式集中在 <code>src/styles/global.css</code>。</p>
-    </article>
-    <article>
-      <h2>怎么发新文章</h2>
-      <p>在 <code>src/content/blog</code> 新建 Markdown 文件，写好 frontmatter，提交并推送即可。</p>
-    </article>
-  </section>
-</BaseLayout>
+<MainGridLayout title={i18n(I18nKey.about)} description={i18n(I18nKey.about)}>
+    <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-9 py-6 relative w-full ">
+            <Markdown class="mt-2">
+                <Content />
+            </Markdown>
+        </div>
+    </div>
+</MainGridLayout>

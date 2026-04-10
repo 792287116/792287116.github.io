@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Steven avatar</title>
+  <desc id="desc">A circular avatar with the initials SF.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#1f7661" />
+      <stop offset="100%" stop-color="#60a97d" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="32" fill="url(#bg)" />
+  <circle cx="64" cy="64" r="42" fill="rgba(255,255,255,0.08)" />
+  <text
+    x="64"
+    y="74"
+    font-family="Arial, sans-serif"
+    font-size="42"
+    font-weight="700"
+    text-anchor="middle"
+    fill="#f3fff6"
+  >
+    SF
+  </text>
+</svg>
